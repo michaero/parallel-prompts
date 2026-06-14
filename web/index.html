@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>parallel-prompts</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0f1115;
+        --surface: #1a1d24;
+        --surface-2: #13161d;
+        --border: #2a2f3a;
+        --border-soft: #1f242d;
+        --text: #e6e6e6;
+        --text-muted: #7a808d;
+        --text-faint: #5a606d;
+        --accent: #3a7bd5;
+        --accent-fg: #ffffff;
+        --danger: #ff7575;
+        --danger-bg: #5a2a2a;
+        --success: #7be58c;
+        --warn: #ff9b6b;
+        --skill: #a07be5;
+        --skill-bg: #1f1828;
+        --code-bg: #0a0c10;
+        --overlay: rgba(0, 0, 0, 0.6);
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+      :root[data-theme="light"] {
+        color-scheme: light;
+        --bg: #f5f6f8;
+        --surface: #ffffff;
+        --surface-2: #f0f2f5;
+        --border: #d8dce3;
+        --border-soft: #e6e9ef;
+        --text: #1a1d24;
+        --text-muted: #5a606d;
+        --text-faint: #98a0ad;
+        --accent: #2c6ad0;
+        --accent-fg: #ffffff;
+        --danger: #c14242;
+        --danger-bg: #f5d0d0;
+        --success: #2ea44f;
+        --warn: #b45309;
+        --skill: #7c4dd0;
+        --skill-bg: #efe7fb;
+        --code-bg: #f8f9fb;
+        --overlay: rgba(20, 22, 28, 0.35);
+        --shadow: 0 10px 30px rgba(20, 22, 28, 0.15);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font: 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      button { font: inherit; }
+      input, textarea, select {
+        font: inherit;
+        background: var(--surface);
+        color: var(--text);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 6px 8px;
+      }
+      textarea { resize: vertical; }
+      code { color: var(--text); }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
