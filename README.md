@@ -11,8 +11,28 @@ A kanban for running [Claude Code](https://docs.anthropic.com/claude/code) on yo
 
 ## Install & run
 
+**One-liner (macOS, recommended):**
+
 ```bash
-git clone <this-repo> parallel-prompts
+curl -fsSL https://raw.githubusercontent.com/michaero/parallel-prompts/main/scripts/install.sh | bash
+```
+
+Clones to `~/parallel-prompts/`, installs deps, builds the UI, builds the macOS `.app` at `~/Applications/Parallel Prompts.app`. Re-run the same command to update.
+
+Then double-click **Parallel Prompts** in Finder to launch. First launch may be blocked by Gatekeeper (right-click → Open → Open to bypass — see [Caveats](#caveats)).
+
+Overrides:
+
+| Env var          | Default                       | Purpose                |
+|------------------|-------------------------------|------------------------|
+| `PP_INSTALL_DIR` | `$HOME/parallel-prompts`      | Where to clone         |
+| `PP_BRANCH`      | `main`                        | Branch to track        |
+| `PP_SKIP_APP`    | unset                         | Skip the `.app` build  |
+
+**Manual install:**
+
+```bash
+git clone https://github.com/michaero/parallel-prompts
 cd parallel-prompts
 npm install
 npm start
@@ -20,20 +40,17 @@ npm start
 
 `npm start` builds the UI once and serves it from a single Node process. Your browser opens to `http://127.0.0.1:5174/`.
 
-To skip the auto-browser-open: `npm start -- --no-open`.
-To force a fresh UI build: `npm start -- --build`.
+Flags: `npm start -- --no-open` (skip auto-open), `npm start -- --build` (force rebuild).
 
-### Double-click experience (macOS)
+### macOS .app
 
-After `npm install`, build a `.app` launcher:
+The one-liner above builds it automatically. If you used the manual install path:
 
 ```bash
 npm run install:macos-app
 ```
 
-This creates `~/Applications/Parallel Prompts.app` pointing at your cloned repo. Double-click it from Finder to launch — first run builds the UI (~10s) and opens the browser. Launcher logs go to `~/Library/Logs/parallel-prompts/launcher.log`. To pick a different destination: `bash scripts/install-macos-app.sh /Applications`.
-
-The `.app` is regenerated each time you run the script — re-run it if you move the repo.
+This creates `~/Applications/Parallel Prompts.app` pointing at your cloned repo. Launcher logs go to `~/Library/Logs/parallel-prompts/launcher.log`. To pick a different destination: `bash scripts/install-macos-app.sh /Applications`. The `.app` hardcodes the repo path — re-run if you move the repo.
 
 ### Development
 
