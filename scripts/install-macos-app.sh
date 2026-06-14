@@ -5,7 +5,18 @@ set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 APP_NAME="Parallel Prompts"
-DEST_DIR="${1:-$HOME/Applications}"
+
+# Prefer /Applications (visible in Finder's sidebar). Fall back to ~/Applications
+# if /Applications isn't writable (e.g. on a non-admin account or locked-down machine).
+if [[ -n "${1:-}" ]]; then
+  DEST_DIR="$1"
+elif [[ -w "/Applications" ]] || (mkdir -p "/Applications" 2>/dev/null && [[ -w "/Applications" ]]); then
+  DEST_DIR="/Applications"
+else
+  DEST_DIR="$HOME/Applications"
+  echo "Note: /Applications is not writable; installing to $DEST_DIR instead." >&2
+fi
+mkdir -p "$DEST_DIR"
 APP_DIR="$DEST_DIR/${APP_NAME}.app"
 
 # Resolve to the REAL node binary (Finder gives launched apps a minimal PATH,
