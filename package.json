@@ -14,7 +14,8 @@
     "dev:server": "node --watch server/index.js",
     "dev:web": "vite --config web/vite.config.js",
     "build": "vite build --config web/vite.config.js",
-    "start": "node bin/parallel-prompts.js"
+    "start": "node bin/parallel-prompts.js",
+    "install:macos-app": "bash scripts/install-macos-app.sh"
   },
   "dependencies": {
     "express": "^4.19.2",

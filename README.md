@@ -23,6 +23,18 @@ npm start
 To skip the auto-browser-open: `npm start -- --no-open`.
 To force a fresh UI build: `npm start -- --build`.
 
+### Double-click experience (macOS)
+
+After `npm install`, build a `.app` launcher:
+
+```bash
+npm run install:macos-app
+```
+
+This creates `~/Applications/Parallel Prompts.app` pointing at your cloned repo. Double-click it from Finder to launch — first run builds the UI (~10s) and opens the browser. Launcher logs go to `~/Library/Logs/parallel-prompts/launcher.log`. To pick a different destination: `bash scripts/install-macos-app.sh /Applications`.
+
+The `.app` is regenerated each time you run the script — re-run it if you move the repo.
+
 ### Development
 
 ```bash
